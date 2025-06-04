@@ -1,7 +1,6 @@
 # Remedial-Informatika-
-// ABSTRACTION
 abstract class Kendaraan {
-    private String merk; // ENCAPSULATION (private field)
+    private String merk; 
     private int tahunProduksi;
 
     public Kendaraan(String merk, int tahunProduksi) {
@@ -9,7 +8,6 @@ abstract class Kendaraan {
         this.tahunProduksi = tahunProduksi;
     }
 
-    // ENCAPSULATION (getter methods)
     public String getMerk() {
         return merk;
     }
@@ -18,11 +16,9 @@ abstract class Kendaraan {
         return tahunProduksi;
     }
 
-    // ABSTRACT METHOD (harus diimplementasikan oleh subclass)
     public abstract void info();
 }
 
-// HIERARCHICAL INHERITANCE (Kendaraan -> Mobil)
 class Mobil extends Kendaraan {
     private int jumlahPintu;
 
@@ -31,7 +27,6 @@ class Mobil extends Kendaraan {
         this.jumlahPintu = jumlahPintu;
     }
 
-    // POLYMORPHISM (override method info)
     @Override
     public void info() {
         System.out.println("Mobil " + getMerk() + " tahun " + getTahunProduksi() + 
@@ -43,7 +38,6 @@ class Mobil extends Kendaraan {
     }
 }
 
-// HIERARCHICAL INHERITANCE (Kendaraan -> Motor)
 class Motor extends Kendaraan {
     private String jenisMotor;
 
@@ -52,7 +46,6 @@ class Motor extends Kendaraan {
         this.jenisMotor = jenisMotor;
     }
 
-    // POLYMORPHISM (override method info)
     @Override
     public void info() {
         System.out.println("Motor " + getMerk() + " tahun " + getTahunProduksi() + 
@@ -64,16 +57,15 @@ class Motor extends Kendaraan {
     }
 }
 
-public class DemoOOP {
+public class App {
     public static void main(String[] args) {
-        // POLYMORPHISM (menggunakan parent class sebagai tipe referensi)
+    
         Kendaraan kendaraan1 = new Mobil("Toyota", 2020, 4);
         Kendaraan kendaraan2 = new Motor("Honda", 2021, "Sport");
         
-        kendaraan1.info(); // Akan memanggil method info dari Mobil
-        kendaraan2.info(); // Akan memanggil method info dari Motor
+        kendaraan1.info(); 
+        kendaraan2.info(); 
         
-        // Untuk memanggil method khusus subclass, perlu casting
         if (kendaraan1 instanceof Mobil) {
             ((Mobil) kendaraan1).klakson();
         }
@@ -82,7 +74,6 @@ public class DemoOOP {
             ((Motor) kendaraan2).klakson();
         }
         
-        // ENCAPSULATION (mengakses field melalui getter)
         System.out.println("Merk kendaraan1: " + kendaraan1.getMerk());
         System.out.println("Tahun produksi kendaraan2: " + kendaraan2.getTahunProduksi());
     }
